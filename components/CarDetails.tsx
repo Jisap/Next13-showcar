@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CarProps } from '@/types';
+import { generateCarImageUrl } from "@/utils";
 
 
 interface CarDetailsProps {
@@ -63,19 +64,19 @@ const CarDetails = ({ isOpen, closeModal, car }:CarDetailsProps ) => (
                   
                   {/* Principal */}
                   <div className='relative w-full h-40 bg-pattern bg-cover bg-center rounded-lg'>
-                    <Image src="/hero.png" alt="" fill className="object-contain" /> 
+                    <Image src={generateCarImageUrl(car)} alt="" fill className="object-contain" /> 
                   </div>
 
                   {/* 3 diferentes perspectivas */}
                   <div className='flex gap-3'>
                     <div className='flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg'>
-                      <Image src="/hero.png" alt="" fill className="object-contain" /> 
+                      <Image src={generateCarImageUrl(car, "29")} alt="" fill className="object-contain" /> 
                     </div>
                     <div className='flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg'>
-                      <Image src="/hero.png" alt="" fill className="object-contain" />
+                      <Image src={generateCarImageUrl(car, "33")} alt="" fill className="object-contain" />
                     </div>
                     <div className='flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg'>
-                      <Image src="/hero.png" alt="" fill className="object-contain" />
+                      <Image src={generateCarImageUrl(car, "13")} alt="" fill className="object-contain" />
                     </div>
                   </div>
 
