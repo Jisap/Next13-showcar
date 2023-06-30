@@ -21,8 +21,6 @@ const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
 )
 
 
-
-
 const SearchBar = () => {
 
     const [manufacturer, setManufacturer] = useState("");
@@ -57,18 +55,21 @@ const SearchBar = () => {
 
         const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
     
-        router.push(newPathname);
+        router.push(newPathname); // Al cargar esta ruta -> home -> fetchAllCars con los nuevos params
     }
 
     return (
-        <form className="searchbar" onSubmit={handleSearch}>
+        // Cuando se de al boton de busqueda se actualizaran los params del url con el fabricante y el modelo 
+        <form className="searchbar" onSubmit={handleSearch}> 
             <div className="searchbar__item">
+                {/* Establece el fabricante */}
                 <SearchManufacturer 
                     manufacturer={manufacturer}
                     setManuFacturer={setManufacturer}
                 />
                 <SearchButton otherClasses="sm:hidden" />
             </div>
+            {/* Establece el modelo */}
             <div className='searchbar__item'>
                 <Image
                     src='/model-icon.png'
