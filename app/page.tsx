@@ -16,6 +16,8 @@ export default async function Home({ searchParams }: HomeProps) {
     model: searchParams.model || "",
   });
   
+  console.log(allCars.length)
+
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 
   return (
@@ -48,7 +50,7 @@ export default async function Home({ searchParams }: HomeProps) {
 
               <Showmore
                 pageNumber={(searchParams.limit || 10) }
-                  isNext={allCars.length > (searchParams.limit || 10)} // Si res > limite -> true (Todavía hay mas rdos que mostrar) 
+                isNext={allCars.length >= (searchParams.limit || 10)} // Si res > limite -> true (Todavía hay mas rdos que mostrar) 
               />
             </section>
           )
