@@ -1,8 +1,8 @@
-
 import { CardCar, CustomFilter, Hero, SearchBar } from "@/components";
 import { HomeProps } from "@/types";
 import { fetchCars } from "@/utils";
 import { fuels, yearsOfProduction } from "./constants";
+import Showmore from "@/components/Showmore";
 
 
 
@@ -17,7 +17,6 @@ export default async function Home({ searchParams }: HomeProps) {
   });
   
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
-
 
   return (
     <main className="overflow-hidden">
@@ -46,6 +45,11 @@ export default async function Home({ searchParams }: HomeProps) {
                   <CardCar car={car} />
                 ))}
               </div>
+
+              <Showmore
+                pageNumber={(searchParams.limit || 10) }
+                  isNext={allCars.length > (searchParams.limit || 10)} // Si res > limite -> true (Todavía hay mas rdos que mostrar) 
+              />
             </section>
           )
           :
